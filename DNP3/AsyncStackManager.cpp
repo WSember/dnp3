@@ -117,6 +117,10 @@ ICommandAcceptor* AsyncStackManager::AddMaster( const std::string& arPortName, c
 	pLogger->SetVarName(arStackName);
 
 	MasterStack* pMaster = new MasterStack(pLogger, &mTimerSrc, apPublisher, pChannel->GetGroup(), arCfg);
+	
+	// added by WSember
+	pMasterHandle = pMaster;
+	
 	LinkRoute route(arCfg.link.RemoteAddr, arCfg.link.LocalAddr);
 
 	this->AddStackToChannel(arStackName, pMaster, pChannel, route);

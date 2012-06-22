@@ -35,6 +35,8 @@
 #include <APL/IOService.h>
 #include <APL/SuspendTimerSource.h>
 
+#include <DNP3/MasterStack.h>
+
 #include "VtoDataInterface.h"
 #include "LinkRoute.h"
 #include "VtoRouterManager.h"
@@ -73,6 +75,9 @@ public:
 	*/
 	AsyncStackManager(Logger* apLogger);
 	~AsyncStackManager();
+
+	// added by WSember
+	MasterStack *pMasterHandle;
 
 	// All the io_service marshalling now occurs here. It's now safe to add/remove while the manager is running.
 

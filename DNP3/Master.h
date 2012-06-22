@@ -78,6 +78,9 @@ public:
 	Master(Logger*, MasterConfig aCfg, IAppLayer*, IDataObserver*, AsyncTaskGroup*, ITimerSource*, ITimeSource* apTimeSrc = TimeSource::Inst());
 	virtual ~Master() {}
 
+	// added by WSember
+	void SetClassPollLevel(int aClassMask);
+
 	ICommandAcceptor* GetCmdAcceptor() {
 		return &mCommandQueue;
 	}

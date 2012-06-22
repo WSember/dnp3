@@ -26,6 +26,8 @@
 #include "PointClass.h"
 #include "VtoReader.h"
 
+using namespace std;
+
 namespace apl
 {
 namespace dnp
@@ -65,7 +67,11 @@ void DataPoll::ReadData(const APDU& f)
 ClassPoll::ClassPoll(Logger* apLogger, IDataObserver* apObs, VtoReader* apVtoReader) :
 	DataPoll(apLogger, apObs, apVtoReader),
 	mClassMask(PC_INVALID)
-{}
+{
+	// added by WSember
+	// initialize this because I prevented it from being set when the master starts an integrity poll
+	mClassMask = PC_CLASS_0;
+}
 
 void ClassPoll::Set(int aClassMask)
 {

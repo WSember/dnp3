@@ -16,6 +16,7 @@
 // specific language governing permissions and limitations
 // under the License.
 //
+
 #include "StackManager.h"
 
 #include <DNP3/AsyncStackManager.h>
@@ -76,6 +77,12 @@ IDataObserver* StackManager::AddSlave(const std::string& arPortName, const std::
 void StackManager::Shutdown()
 {
 	mpImpl->Shutdown();
+}
+
+// added by WSember
+void StackManager::SetClassPollLevel(int aClassMask)
+{
+	mpImpl->pMasterHandle->mMaster.SetClassPollLevel(aClassMask);
 }
 
 void StackManager::RemovePort(const std::string& arPortName)

@@ -82,6 +82,10 @@ public:
 
 	void Shutdown();
 
+	// added by WSember, this allows Python
+	// to set the poll level (class 0, 1, 2, 3)
+	void SetClassPollLevel(int aClassMask);
+
 private:
 	EventLog* mpLog;
 	AsyncStackManager* mpImpl;

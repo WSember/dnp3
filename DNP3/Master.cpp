@@ -105,6 +105,12 @@ Master::Master(Logger* apLogger, MasterConfig aCfg, IAppLayer* apAppLayer, IData
 	this->UpdateState(SS_COMMS_DOWN);
 }
 
+// added by WSember
+void Master::SetClassPollLevel(int aClassMask)
+{
+    mClassPoll.Set(aClassMask);
+}
+
 void Master::UpdateState(StackStates aState)
 {
 	if(mState != aState) {
@@ -203,7 +209,8 @@ void Master::WriteIIN(ITask* apTask)
 
 void Master::IntegrityPoll(ITask* apTask)
 {
-	mClassPoll.Set(PC_CLASS_0);
+	// commented out by WSember to allow custom setting of the class level
+	//mClassPoll.Set(PC_CLASS_0);
 	mpState->StartTask(this, apTask, &mClassPoll);
 }
 
